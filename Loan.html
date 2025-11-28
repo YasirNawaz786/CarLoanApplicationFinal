@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Loan Application</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+  <div class="w-full max-w-2xl bg-white rounded-2xl shadow-xl py-8 px-6">
+
+    <h1 class="text-2xl font-semibold text-gray-800 text-center mb-6">Car Loan Application</h1>
+
+    <form id="loanForm" class="space-y-6">
+
+      <div class="border-b pb-4">
+        <h2 class="text-lg font-medium text-gray-700 mb-3">Car Selection</h2>
+
+        <div class="space-y-4">
+          <div>
+            <label class="block mb-1 text-sm text-gray-700">Car Old Model</label>
+            <select id="carModel" class="w-full border rounded-lg px-3 py-2">
+              <option value="0">--Choose Your Favourite Car--</option>
+              <option value="2500000">Suzuki Alto: PKR 29.9 - 33.3 lacs</option>
+              <option value="1800000">PKR 61.0 - 77.1 lacs</option>
+              <option value="1200000">Honda City: PKR 47.4 - 61.5 lacs</option>
+              <option value="800000">Honda Civic: PKR 88.3 lacs - 1.01 crore</option>
+              <option value="1800000">Toyota Yaris: PKR 46.5 - 64.5 lacs</option>
+              <option value="1200000">Hyundai Tucson: PKR 1.12 - 1.22 crore</option>
+              <option value="800000">MG HS: PKR 84.0 - 99.0 lacs </option>
+            
+ </select>
+ <div class="space-y-4">
+          <div>
+            <label class="block mb-1 text-sm text-gray-700">Newly Launched Models</label>
+            <select id="carModel" class="w-full border rounded-lg px-3 py-2">
+              <option value="0">--Newly Launched Models Availaible--</option>
+              <option value="2500000">JAC T9: PKR 1.05 crore</option>
+              <option value="1800000">Deepal S07: PKR 1.50 crore</option>
+              <option value="1200000">Jaecoo J7: PKR 99.99 lacs </option>
+              <option value="800000">Honda Civic: PKR 88.3 lacs - 1.01 crore</option>
+              <option value="1800000">Deepal S05: PKR 99.99 lacs </option>
+            
+ </select>
+          </div>
+
+          <div>
+            <label class="block mb-1 text-sm text-gray-700">Variant / Vendor</label>
+            <select id="variant" class="w-full border rounded-lg px-3 py-2">
+              <option value="standard">Standard</option>
+              <option value="deluxe">Old Model (+5%)</option>
+              <option value="sports">Newly Model (+10%)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-b pb-4">
+        <h2 class="text-lg font-medium text-gray-700 mb-3">Loan Details</h2>
+
+        <div class="space-y-4">
+          <div>
+            <label class="block mb-1 text-sm text-gray-700">Tenure (Months)</label>
+            <select id="tenure" class="w-full border rounded-lg px-3 py-2">
+              <option value="0">-- Select --</option>
+              <option value="12">12</option>
+              <option value="24">24</option>
+              <option value="36">36</option>
+              <option value="48">48</option>
+              <option value="60">60</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block mb-1 text-sm text-gray-700">Deposit (PKR)</label>
+            <input id="deposit" type="number" min="0" value="0" class="w-full border rounded-lg px-3 py-2">
+          </div>
+
+          <div>
+            <label class="block mb-1 text-sm text-gray-700">Intermediate Booking</label>
+            <select id="booking" class="w-full border rounded-lg px-3 py-2">
+              <option value="0">No</option>
+              <option value="20000">Yes — PKR 20,000</option>
+              <option value="50000">Yes — PKR 50,000</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-b pb-4">
+        <h2 class="text-lg font-medium text-gray-700 mb-3">Additional Options</h2>
+
+        <div class="space-y-4">
+          <div>
+            <label class="block mb-1 text-sm text-gray-700">Processing Fee</label>
+            <select id="procFeeOpt" class="w-full border rounded-lg px-3 py-2">
+              <option value="fixed">Fixed PKR 15,000</option>
+              <option value="percent">1% of Loan Amount</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block mb-1 text-sm text-gray-700">Insurance</label>
+            <select id="insurance" class="w-full border rounded-lg px-3 py-2">
+              <option value="0">No</option>
+              <option value="40000">Yes — PKR 40,000</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex gap-4 pt-2">
+        <button id="calculateBtn" type="button" class="flex-1 bg-blue-600 text-white rounded-lg py-2">
+          Calculate
+        </button>
+        <button id="resetBtn" type="button" class="flex-1 border border-gray-400 rounded-lg py-2">
+          Reset
+        </button>
+      </div>
+
+    </form>
+
+    <div id="results" class="mt-8 p-5 bg-gray-50 rounded-xl hidden">
+      <h2 class="text-lg font-semibold text-gray-800 mb-4">Loan Summary</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div><p class="text-sm text-gray-600">Car Price</p><p id="outCarPrice" class="text-xl font-semibold">—</p></div>
+        <div><p class="text-sm text-gray-600">Deposit</p><p id="outDeposit" class="text-xl font-semibold">—</p></div>
+        <div><p class="text-sm text-gray-600">Loan Amount</p><p id="outLoanAmount" class="text-xl font-semibold">—</p></div>
+        <div><p class="text-sm text-gray-600">Interest Rate</p><p id="outRate" class="text-xl font-semibold">—</p></div>
+        <div><p class="text-sm text-gray-600">Monthly Installment</p><p id="outMonthly" class="text-xl font-semibold">—</p></div>
+        <div><p class="text-sm text-gray-600">Total Payable</p><p id="outTotal" class="text-xl font-semibold">—</p></div>
+      </div>
+
+      <p id="notes" class="text-sm text-gray-600 mt-4"></p>
+    </div>
+
+  </div>
+
+  <script src="loan.js"></script>
+</body>
+</html>
